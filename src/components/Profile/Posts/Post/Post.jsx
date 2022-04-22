@@ -5,13 +5,11 @@ import s from "./Post.module.css";
 const Post = (props) => {
   return (
     <div className={s.item}>
-      <div>
-        <img
-          className={s.image}
-          src="https://pravodeneg.net/wp-content/uploads/2019/03/pepsi.png"
-        />
-        {props.message}
-      </div>
+      <img
+        className={s.image}
+        src="https://pravodeneg.net/wp-content/uploads/2019/03/pepsi.png"
+      />
+      {props.message}
     </div>
   );
 };

@@ -1,6 +1,8 @@
 .nav {
   grid-area: n;
   background-color: lightblue;
+  text-align: center;
+  padding: 20px 0;
 }
 
 .link {
@@ -8,6 +10,7 @@
   color: white;
 }
 
-.link.active {
+.active {
   color: gold;
+  text-decoration: none;
 }

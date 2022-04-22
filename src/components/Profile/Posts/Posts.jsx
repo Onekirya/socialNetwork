@@ -1,11 +1,16 @@
 import React from "react";
 import Post from "./Post/Post";
+import s from './Posts.module.css';
 
 const Posts = () => {
   return (
-    <div>
-      my posts
-      <div>new post</div>
+    <div className={s.posts}>
+      <h3>My posts</h3>
+      <div>
+      <textarea></textarea>
+      </div>
+      <div>
+      <button>Add post</button></div>
       <Post message='It is my post number 6'/>
       <Post message='It is my post number 5'/>
       <Post message='It is my post number 4'/>

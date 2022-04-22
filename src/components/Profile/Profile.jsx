@@ -1,20 +1,14 @@
 import React from "react";
 import Posts from "./Posts/Posts";
 import s from './Profile.module.css';
+import ProfileInfo from "./ProfileInfo";
 
 const Profile = () => {
   return (
     <div className={s.content}>
-      <div>
-        <img className={s.image} src="https://gulaytour.ru/wp-content/uploads/2017/07/x4kFg.jpg" />
+      <ProfileInfo/>
+      <Posts />
       </div>
-      <div>
-        ava + description
-        </div>
-        <div>
-          <Posts />
-        </div>
-    </div>
   );
 };
 
