@@ -8,7 +8,7 @@ import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-  let state = props.store.getState().dialogsePage;
+  let state = props.dialogsePage;
 
   let dialogElements = state.dialogData.map((d) => (
     <DialogItem name={d.name} id={d.id} />
@@ -19,10 +19,10 @@ const Dialogs = (props) => {
   let newMessageBody = state.newMessageBody;
   let onNewMessageChange = (e) => {
     let body = e.target.value;
-    props.store.dispatch(updateNewMessageBodyCreator(body));
+    props.updateNewMessageBody(body);
   };
   let onSendMessageClick = () => {
-    props.store.dispatch(sendMessageCreator());
+    props.sendMessage();
   };
 
   return (
