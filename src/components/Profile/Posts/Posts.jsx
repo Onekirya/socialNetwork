@@ -1,14 +1,10 @@
 import React from "react";
-import {
-  addPostAcrionCreator,
-  updateNewPostTextActionCreator,
-} from "../../../redux/store";
 import Post from "./Post/Post";
 import s from "./Posts.module.css";
 
 const Posts = (props) => {
   let postElements = props.postData.map((p) => (
-    <Post message={p.message} likesCount={p.likesCount} />
+    <Post message={p.message} likesCount={p.likesCount} key={p.id}/>
   ));
 
   let newPostElement = React.createRef();
