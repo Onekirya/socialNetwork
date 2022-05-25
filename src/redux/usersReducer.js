@@ -1,16 +1,17 @@
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
+const TOGGLE_IS_FETCHINNG = "TOGGLE_IS_FETCHINNG";
+
 
 let inicialState = {
-  users: [
-    // { id: 1, userPhoto:'https://www.clipartmax.com/png/full/267-2671061_yükle-youssefdibeyoussefdibe-profile-picture-user-male.png', 
-    // followed: true,  fullName: 'Ivan', status: 'I like football', location: 'Moscow'},
-    // { id: 2, userPhoto:'https://www.clipartmax.com/png/full/267-2671061_yükle-youssefdibeyoussefdibe-profile-picture-user-male.png', 
-    // followed: false, fullName: 'Vasya', status: 'I hate internet', location: 'Minsk'},
-    // { id: 3, userPhoto:'https://www.clipartmax.com/png/full/267-2671061_yükle-youssefdibeyoussefdibe-profile-picture-user-male.png', 
-    // followed: true,  fullName: 'Petr', status: 'Hi there', location: 'Astana' }
-  ],
+  users: [ ],
+  pageSize: 20,
+  totalUsersCount: 0,
+  currentPage: 1,
+  isFetching: true
 };
 
 const usersReducer = (state = inicialState, action) => {
@@ -39,7 +40,16 @@ case UNFOLLOW : {
 
 }
 case SET_USERS : {
-  return {...state, users: [...state.users, ...action.users]}
+  return {...state, users: action.users}
+}
+case SET_CURRENT_PAGE : {
+  return {...state, currentPage: action.currentPage}
+}
+case SET_TOTAL_USERS_COUNT : {
+  return {...state, totalUsersCount: action.count}
+}
+case TOGGLE_IS_FETCHINNG : {
+  return {...state, isFetching: action.isFetching}
 }
   
 default:
@@ -47,8 +57,13 @@ default:
   }
 }
 
-export const followAC = (userId) => ({type: FOLLOW, userId});
-export const unFollowAC = (userId) => ({type: UNFOLLOW, userId});
-export const setUsersAC = (users) => ({type: SET_USERS, users});
+export const follow = (userId) => ({type: FOLLOW, userId});
+export const unFollow = (userId) => ({type: UNFOLLOW, userId});
+export const setUsers = (users) => ({type: SET_USERS, users});
+export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount});
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHINNG, isFetching});
+
+
 
 export default usersReducer;
