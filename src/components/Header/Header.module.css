@@ -6,3 +6,11 @@
   height: 100%;
   object-fit: cover;
 }
+
+.loginBlock{
+  float: right;
+}
+
+.loginBlock a {
+  color: white;
+}
