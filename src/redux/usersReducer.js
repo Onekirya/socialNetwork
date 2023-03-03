@@ -13,11 +13,12 @@ let inicialState = {
   pageSize: 20,
   totalUsersCount: 0,
   currentPage: 1,
-  isFetching: true,
+  isFetching: false,
   followingInProgress: [],
 };
 
 const usersReducer = (state = inicialState, action) => {
+
   switch (action.type) {
     case FOLLOW: {
       return {
@@ -115,16 +116,16 @@ export const follow = (userId) => {
   };
 };
 
-export const unFollow = (userId) => {
+export const unfollow = (userId) => {
   return (dispatch) => {
-    dispatch(toggleFollowingProgress(true, userId));
-    usersAPI.follow(userId)
+    dispatch(toggleFollowingProgress(false, userId));
+    usersAPI.unfollow(userId)
       .then((response) => {
         if (response.data.resultCode == 0) {
           dispatch(unFollowSuccess(userId));
         }
       });
-    dispatch(toggleFollowingProgress(false, userId));
+    dispatch(toggleFollowingProgress(true, userId));
   };
 };
 
