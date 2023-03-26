@@ -4,7 +4,6 @@ import userPhoto from "../../assets/images/userPhoto.jpg";
 import { NavLink } from "react-router-dom";
 
 const Users = (props) => {
-  debugger
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
   let pages = [];
@@ -42,7 +41,7 @@ const Users = (props) => {
             <div>
               {u.followed 
               ? (<button 
-                  disabled={props.followingInProgress.find((id) => id === u.id)}
+                  disabled={props.followingInProgress.some((id) => id === u.id)}
                   onClick={() => {
                     props.unfollow(u.id);
                   }}
@@ -52,7 +51,7 @@ const Users = (props) => {
               ) 
               : (
                 <button
-                  disabled={props.followingInProgress.find((id) => id === u.id)}
+                  disabled={props.followingInProgress.some((id) => id === u.id)}
                   onClick={() => {
                     props.follow(u.id);
                   }}

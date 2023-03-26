@@ -96,6 +96,7 @@ export const getUsers = (currentPage, pageSize) => {
     usersAPI
       .getUsers(currentPage, pageSize)
       .then((data) => {
+        dispatch(setCurrentPage(currentPage));
         dispatch(toggleIsFetching(false));
         dispatch(setUsers(data.items));
         dispatch(setTotalUsersCount(data.totalCount));
@@ -118,14 +119,14 @@ export const follow = (userId) => {
 
 export const unfollow = (userId) => {
   return (dispatch) => {
-    dispatch(toggleFollowingProgress(false, userId));
+    dispatch(toggleFollowingProgress(true, userId));
     usersAPI.unfollow(userId)
       .then((response) => {
         if (response.data.resultCode == 0) {
           dispatch(unFollowSuccess(userId));
         }
       });
-    dispatch(toggleFollowingProgress(true, userId));
+    dispatch(toggleFollowingProgress(false, userId));
   };
 };
 

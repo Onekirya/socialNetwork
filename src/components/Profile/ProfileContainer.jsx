@@ -1,32 +1,40 @@
-import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
-import { usersAPI } from "../../api/api";
-import { setUserProfile } from "../../redux/profileReducer";
+import { compose } from "redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { getUserProfile } from "../../redux/profileReducer";
 import Profile from "./Profile";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.param.userID;
+    let userId = this.props.params.userId;
+    debugger
     if (!userId) {
       userId = 2;
     }
-    usersAPI.getProfile(userId).then((response) => {
-      this.props.setUserProfile(response.data);
-    })
+    this.props.getUserProfile(userId);
   }
+
   render() {
     return <Profile {...this.props} profile={this.props.profile} />;
   }
 }
 
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
 let mapStateToProps = (state) => ({
-  profile: state.profilePage.profile,
+  profile: state.profilePage.profile
 });
 
 const TakeParams = (props) => {
-  return <ProfileContainer {...props} param={useParams()} />;
+  return <AuthRedirectComponent {...props} params={useParams()} />;
 };
 
-export default connect(mapStateToProps, { setUserProfile })(TakeParams);
+export default connect(mapStateToProps, { getUserProfile })(TakeParams);
+
+// compose(
+//   connect(mapStateToProps, { getUserProfile }),
+//   TakeParams,
+//   withAuthRedirect
+// )(ProfileContainer)
