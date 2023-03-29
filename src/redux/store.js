@@ -54,9 +54,10 @@ let store = {
   },
 };
 
-export const addPostAcrionCreator = () => {
+export const addPostAcrionCreator = (newPostText) => {
   return {
     type: ADD_POST,
+    newPostText
   };
 };
 export const updateNewPostTextActionCreator = (text) => {

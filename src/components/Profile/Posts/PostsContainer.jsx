@@ -1,8 +1,7 @@
 import { connect } from "react-redux";
 import {
-  addPostAcrionCreator,
-  updateNewPostTextActionCreator,
-} from "../../../redux/store";
+  addPostActionCreator
+} from "../../../redux/profileReducer";
 import Posts from "./Posts";
 
 const mapStateToProps = (state) => {
@@ -13,12 +12,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateNewPostText: (text) => {
-      let action = updateNewPostTextActionCreator(text);
-      dispatch(action)
-    },
-    addPost: () => {
-      dispatch(addPostAcrionCreator());
+    addPost: (newPostText) => {
+      dispatch(addPostActionCreator(newPostText));
     }
   }
 }
