@@ -5,6 +5,7 @@ import { Field, reduxForm } from "redux-form";
 import { login } from "../../redux/authReducer";
 import { required } from "../../utils/validators/validators";
 import { Input } from "../common/FormsControls/FormsControls";
+import s from "./../common/FormsControls/FormsControls.module.css";
 
 const LoginForm = (props) => {
   return (
@@ -30,6 +31,7 @@ const LoginForm = (props) => {
         <Field type={"checkbox"} name={"rememberMe"} component={"input"} />{" "}
         remember me
       </div>
+      {props.error && <div className={s.formSumaryError}>{props.error}</div>}{" "}
       <button>Login</button>
     </form>
   );
@@ -54,8 +56,8 @@ const Login = (props) => {
   );
 };
 
-const mapStateToProps = (state) =>({
-  isAuth: state.auth.isAuth
-})
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+});
 
 export default connect(mapStateToProps, { login })(Login);
