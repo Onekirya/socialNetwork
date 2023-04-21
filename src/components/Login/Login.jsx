@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { login } from "../../redux/authReducer";
 import { required } from "../../utils/validators/validators";
 import { Input, createField } from "../common/FormsControls/FormsControls";
@@ -13,7 +13,7 @@ const LoginForm = ({ handleSubmit, error }) => {
       {createField("Email", "email", [required], Input)}
       {createField("Password", "password", [required], Input, {type:"password"})}
       {createField(null, "rememberMe", [], Input, {type:"checkbox"}, "remember me")}
-      {error && <div className={s.formSumaryError}>{error}</div>}{" "}
+      {error && <div className={s.formSumaryError}>{error}</div>}
       <button>Login</button>
     </form>
   );
