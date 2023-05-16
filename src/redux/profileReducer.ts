@@ -13,8 +13,7 @@ let inicialState = {
     { id: 6, message: "It is my post number 6", likesCount: 14 },
   ] as Array<PostType>,
   profile: null as ProfileType | null,
-  status: "",
-  newPostText: ''
+  status: ""
 };
 
 const profileReducer = (state = inicialState, action: ActionsType): inicialStateType => {
@@ -27,7 +26,6 @@ const profileReducer = (state = inicialState, action: ActionsType): inicialState
       };
       return {
         ...state,
-        newPostText: "",
         postData: [...state.postData, newPost],
       };
     }

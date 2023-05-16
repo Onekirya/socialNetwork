@@ -6,24 +6,18 @@ import {
   actions
 } from "../../redux/dialogsReducer";
 import Dialogs from "./Dialogs";
+import { AppStateType } from "../../redux/reduxStore";
 
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
   return {
     dialogsePage: state.dialogsePage
   }
 }
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    sendMessage: (sendMessage) => {
-      dispatch(actions.sendMessageCreator(sendMessage));
-    }
-  }
-};
-
-
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+export default compose<React.ComponentType>(
+  connect(mapStateToProps, {
+    ...actions
+  }),
   withAuthRedirect
 )(Dialogs);

@@ -34,7 +34,6 @@ export const Input: FC<WrappedFieldProps> = (props) => {
   const { input, meta, ...restProps } = props;
   return (
     <FormControl {...props}>
-      {" "}
       <input {...input} {...restProps} />
     </FormControl>
   );
@@ -63,3 +62,5 @@ export function createField<FormsKeysType extends string>(
     </div>
   );
 }
+
+export type GetStringCase<T> = Extract <keyof T, string>

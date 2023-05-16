@@ -81,7 +81,5 @@ let AuthRedirectComponent = withAuthRedirect(UsersContainer);
 export default connect<MapStatePropsType, MapDispatchPropsType, OwnProps, AppStateType>(mapStateToProps, {
   follow,
   unfollow,
-  // setCurrentPage,
-  // toggleFollowingProgress,
   requestUsers,
 })(AuthRedirectComponent);
