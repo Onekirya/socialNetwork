@@ -1,5 +1,5 @@
-import { ResponseType } from "axios";
-import { GetItemsType, instance } from "./api";
+
+import { GetItemsType, ResponseType, instance } from "./api";
 
 export const usersAPI = {
   getUsers(

@@ -1,4 +1,5 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState } from "react"
+//@ts-ignore
 import styles from "./Paginator.module.css";
 import classNames from "classnames";
 

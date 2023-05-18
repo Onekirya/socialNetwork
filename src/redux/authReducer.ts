@@ -3,7 +3,7 @@ import { ResultCodeForCaptchaEnum, ResultCodesEnum } from "../api/api";
 import { authAPI } from "../api/authAPI";
 import { securityAPI } from "../api/securityAPI";
 import { BaseThunkType, InferActionsTypes } from "./reduxStore";
-import { Action } from "redux";
+import { Action, AnyAction } from "redux";
 
 export type inicialStateType2 = {
   id: number | null,
