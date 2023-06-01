@@ -1,4 +1,4 @@
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import { usersAPI } from "../api/usersAPI";
 import { UserType } from "../types/types";
 import { updateObjectInArray } from "../utils/objectHelpers";
